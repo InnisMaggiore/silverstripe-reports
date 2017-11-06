@@ -1,6 +1,7 @@
 {
   "name": "innis-maggiore/silverstripe-reports",
   "description": "Internal reports",
+  "type": "silverstripe-module",
   "require": {
     "php": "^5.3.3 || ^7.0",
     "silverstripe/cms": ">=3.4.0",
