@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sara
- * Date: 10/19/17
- * Time: 9:19 AM
- */
+
 class CustomSideReport_ListofImagesAndFiles extends SS_Report {
 
     // the name of the report
