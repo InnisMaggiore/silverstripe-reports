@@ -4,7 +4,7 @@ class CustomSideReport_ListofImagesAndFiles extends SS_Report {
 
     // the name of the report
     public function title() {
-        return 'All Images and Files';
+        return '(IM) All Images and Files';
     }
 
     // what we want the report to return

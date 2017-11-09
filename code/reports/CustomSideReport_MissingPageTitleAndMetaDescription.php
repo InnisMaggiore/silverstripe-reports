@@ -4,7 +4,7 @@ class CustomSideReport_MissingPageTitleAndMetaDescription extends SS_Report {
 
     // the name of the report
     public function title() {
-        return 'Pages with Missing Page Titles and Meta Descriptions';
+        return '(IM) Pages with Missing Page Titles and Meta Descriptions';
     }
 
     // what we want the report to return
@@ -17,7 +17,14 @@ class CustomSideReport_MissingPageTitleAndMetaDescription extends SS_Report {
                     return false;
                 }
 
-                if (empty($item->Title)) {
+                // we try to have a special section for each page in the metadata
+                // where we can specify keywords, etc. When we do that the field to
+                // check should be that one.
+                if ($item->hasField('PageTitle') && empty($item->PageTitle)) {
+                    return true;
+                }
+
+                if (!$item->hasField('PageTitle') && empty($item->Title)) {
                     return true;
                 }
 
@@ -34,8 +41,12 @@ class CustomSideReport_MissingPageTitleAndMetaDescription extends SS_Report {
             'ID' => [
                 "link" => true,
             ],
+            'PageTitle' => [
+                "title" => "SEO Page Title",
+                "link" => true,
+            ],
             'Title' => [
-                "title" => "Title",
+                "title" => "Title (not used if SEO Page Title exists)",
                 "link" => true,
             ],
             'MetaDescription' => 'MetaDescription',
